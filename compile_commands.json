@@ -8,12 +8,12 @@
             "-fno-ms-extensions",
             "-fno-ms-compatibility",
             "-fno-delayed-template-parsing",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v7-a+simd/hard",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/backward",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/include",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/include-fixed",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/arm-none-eabi/thumb/v7-a+simd/hard",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/backward",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/include",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/include-fixed",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include",
             "-iquote./include",
             "-iquote./include/./",
             "-mcpu=cortex-a9",
@@ -35,11 +35,11 @@
             "-funwind-tables",
             "--std=gnu++23",
             "-o",
-            "bin/main.cpp.o",
-            "src\\main.cpp"
+            "bin/roboports.cpp.o",
+            "src\\roboports.cpp"
         ],
-        "directory": "c:\\Users\\robot\\.vscode\\288A-CASS-25\\288A-CASS-25",
-        "file": "src\\main.cpp"
+        "directory": "C:\\Users\\robod\\OneDrive\\Documents\\288A CS-GO 2026 (Vex States Code)\\288A CS-GO Main",
+        "file": "src\\roboports.cpp"
     },
     {
         "arguments": [
@@ -50,12 +50,12 @@
             "-fno-ms-extensions",
             "-fno-ms-compatibility",
             "-fno-delayed-template-parsing",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v7-a+simd/hard",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/backward",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/include",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/include-fixed",
-            "-isystemC:/Users/robot/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/arm-none-eabi/thumb/v7-a+simd/hard",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/backward",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/include",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/include-fixed",
+            "-isystemC:/Users/robod/AppData/Roaming/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-windows/usr/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include",
             "-iquote./include",
             "-iquote./include/./",
             "-mcpu=cortex-a9",
@@ -80,7 +80,7 @@
             "bin/main.cpp.o",
             "src\\main.cpp"
         ],
-        "directory": "C:\\Users\\robot\\.vscode\\288A-CASS-25\\288A-CASS-25",
+        "directory": "C:\\Users\\robod\\OneDrive\\Documents\\288A CS-GO 2026 (Vex States Code)\\288A CS-GO Main",
         "file": "src\\main.cpp"
     }
 ]
