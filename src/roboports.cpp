@@ -82,16 +82,3 @@ lemlib::OdomSensors sensors(&vertical1, // vertical tracking wheel
 
 // create the chassis
 lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors, &throttleCurve, &steerCurve);
-
-// angle calculation
-    // theda = (change in l - change in r)/(t1 + tr)
-
-// global transformation
-    // x1 = x0 + change in x * cos(theda0) - change in y * sin(theda0)
-    // y1 = y0 + change in y * sin(theda0) + change in y * cos(theda0)
-
-// tracking wheel delta
-    //change in s = (rotation * wheel diamether * pi)/ gear ratio
-
-// heading
-    // theda(new) = theda(old) + change in theda

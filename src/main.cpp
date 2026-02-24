@@ -2,6 +2,7 @@
 #include "customs/roboports.hpp"
 #include "customs/autons.hpp"
 #include "customs/autonselector.hpp"
+#include "customs/subsystems.hpp"
 #include "customs/RCL.hpp"
 
 // Where Do You want the robot to end? (This is static for position logging)
@@ -12,8 +13,8 @@ double desiredTheta = 90;
 // Initialize the robot code
 void initialize() {
     pros::lcd::initialize(); // Initialize brain screen
-chassis.calibrate(); // calibrate sensors
-    // RclMain.startTracking();
+    chassis.calibrate(); // calibrate sensors
+    RclMain.startTracking(); // start RCL tracking
 
 // Thread to for brain screen and position logging
 pros::Task screenTask([&]() {
@@ -37,8 +38,7 @@ pros::Task screenTask([&]() {
 void disabled() {}
 
 // Competition initialize
-void competition_initialize() {
-    
+void competition_initialize() { 
     const char* autons[] = {
         "10 Ball Right",
         "6 Ball Right",
@@ -46,7 +46,6 @@ void competition_initialize() {
         "Skills",
         ""
     };
-
     selector::init(360, 1, autons);
 }
 
@@ -55,7 +54,7 @@ ASSET(PathLoader_txt); // The ASSET (PathLoader_txt) '.' replaced with "_" to ma
 
 // Autonomous
 void autonomous() {
-    RCLTest(chassis); 
+    tenBR(chassis); 
     // int a = selector::getAuton();
     // switch (a) {
     //     case 1:  tenBR(chassis); break;
@@ -70,72 +69,13 @@ void autonomous() {
 
 // Operator Control
 void opcontrol() {
-
-// Piston State memory
-    bool LoaderState = false; // variable to keep track of Loader state
-	bool DescoreState = false; // variable to keep track of Descore state
-
-// Controller edge detection memory
-    bool lastR2 = false; // last state of R2 button
-    bool lastR1 = false; // last state of R1 button
-
-// Cooldown timers (non-blocking)
-    uint32_t loaderCooldown = 0;
-    uint32_t descoreCooldown = 0;
-    const uint32_t toggleDelay = 10;
-
     while (true) {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
         int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
         chassis.arcade(leftY, rightX);
-    if (controller.get_digital(DIGITAL_L2 ) && controller.get_digital(DIGITAL_L1)) {
-            Intake.move_velocity(600);
-			Redirect.move_velocity(-600);
-			Sort.move_velocity(600);
-    } else if (controller.get_digital(DIGITAL_L2)) {
-            Intake.move_velocity(-600);
-			Redirect.move_velocity(600);
-			Sort.move_velocity(Redirect.get_actual_velocity());
-    } else if (controller.get_digital(DIGITAL_L1)) {
-			Redirect.move_velocity(Sort.get_actual_velocity());
-			Sort.move_velocity(-600);
-            static int lowVelocityCounter = 0;
-            double intakeVelocity = fabs(Intake.get_actual_velocity());
-            if (intakeVelocity < 20) { 
-            lowVelocityCounter++;
-            } else {
-            lowVelocityCounter = 0;
-            }
-            if (lowVelocityCounter > 15) {  // If velocity is low for 150ms, intake jammed
-            Intake.move_velocity(-600);  // reverse intake to clear jam
-            } else {
-            Intake.move_velocity(600);   // intake
-        }
-    } else {
-            Intake.move_velocity(0);
-			Redirect.move_velocity(0);
-			Sort.move_velocity(0);
-    }
-    bool currentR2 = controller.get_digital(DIGITAL_R2);
-        if (currentR2 && !lastR2 && pros::millis() - loaderCooldown > toggleDelay) {
-            LoaderState = !LoaderState;
-        if (LoaderState)
-            Loader.extend();
-        else
-            Loader.retract();
-        loaderCooldown = pros::millis();
-    }
-        lastR2 = currentR2;
-    bool currentR1 = controller.get_digital(DIGITAL_R1);
-        if (currentR1 && !lastR1 && pros::millis() - descoreCooldown > toggleDelay) {
-            DescoreState = !DescoreState;
-        if (DescoreState)
-            Descore.extend();
-        else
-            Descore.retract();
-        descoreCooldown = pros::millis();
-    }
-        lastR1 = currentR1;
+            setIntakes(); 
+            setLoader(); 
+            setDescore();
         pros::delay(10);
     }
 }

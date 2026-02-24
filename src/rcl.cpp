@@ -1,10 +1,4 @@
-// RclTracking.cpp
-// Description: This file implements the RCL Tracking system for a robot, including
-//              sensor management, obstacle detection, position tracking and syncing
-//              using VEX V5 distance sensors.
-//              Most functionalities are achieved through basic sensor fusion and
-//              intersection math.
-
+// Ray-Casting-Localizer (Robot pose tracking system)
 #include "customs/RCL.hpp"
 #include <cmath>
 
@@ -34,6 +28,7 @@ bool Line_Obstacle::expired() {
 
 // Check if sensor ray intersects this obstacle line
 bool Line_Obstacle::isIntersecting(const SensorPose& sp) const {
+    
     // Ray direction vector
     double angRad = degToRad(botToTrig(sp.heading));
     double vAx = std::cos(angRad);
