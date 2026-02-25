@@ -678,8 +678,7 @@ bin/autons.cpp.o: src/autons.cpp include/customs/autons.hpp \
  include/pros/motor_group.hpp include/pros/motors.hpp \
  include/pros/optical.hpp include/pros/optical.h \
  include/pros/rotation.hpp include/pros/rtos.hpp include/pros/screen.hpp \
- include/pros/screen.h include/pros/vision.hpp include/pros/vision.h \
- include/customs/tasks.hpp include/customs/subsystems.hpp
+ include/pros/screen.h include/pros/vision.hpp include/pros/vision.h
 include/customs/autons.hpp:
 include/lemlib/chassis/chassis.hpp:
 include/pros/rtos.hpp:
@@ -1445,5 +1444,3 @@ include/pros/screen.hpp:
 include/pros/screen.h:
 include/pros/vision.hpp:
 include/pros/vision.h:
-include/customs/tasks.hpp:
-include/customs/subsystems.hpp:

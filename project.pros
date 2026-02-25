@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "tenBR",
+    "project_name": "sixBL",
     "target": "v5",
     "templates": {
       "LemLib": {
@@ -636,7 +636,7 @@
     },
     "upload_options": {
       "description": "288A-CSGO-26",
-      "slot": 4,
+      "slot": 3,
       "icon": "planet"
     },
     "use_early_access": false
