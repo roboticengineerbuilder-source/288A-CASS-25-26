@@ -1,8 +1,6 @@
 #pragma once
 
-#include <string>
-
-//selector config
+//auton selector config
 #define HUE 360
 #define DEFAULT 1
 #define AUTONS "Front", "Back", "Do Nothing"

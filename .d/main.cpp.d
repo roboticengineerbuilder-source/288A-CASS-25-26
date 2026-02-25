@@ -678,7 +678,8 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/lemlib/logger/infoSink.hpp \
  include/lemlib/logger/telemetrySink.hpp include/pros/distance.hpp \
  include/customs/RCL.hpp include/customs/autons.hpp \
- include/customs/autonselector.hpp include/customs/subsystems.hpp
+ include/customs/autonselector.hpp include/customs/subsystems.hpp \
+ include/customs/tasks.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -1446,3 +1447,4 @@ include/customs/RCL.hpp:
 include/customs/autons.hpp:
 include/customs/autonselector.hpp:
 include/customs/subsystems.hpp:
+include/customs/tasks.hpp:

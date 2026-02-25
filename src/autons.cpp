@@ -3,14 +3,13 @@
 #include "lemlib/chassis/chassis.hpp"
 #include "customs/RCL.hpp"
 #include "pros/rtos.hpp"
+#include "customs/tasks.hpp"
+#include "customs/subsystems.hpp"
 
 void tenBR(lemlib::Chassis &chassis) {
  // First set the robot's starting pose
     chassis.setPose(46, 14, 0);
     RclMain.setRclPose( lemlib::Pose(46,14,0));
-    RclMain.updateBotPose();
-    // Robot waits for .2 seconds to avoid miscalibration
-        pros::delay(200);
     // Robot moves to a pose in between the loader and long goal
     chassis.moveToPose(46,38,0, 1000); // moves to (46, 40) with a 1.5 second timeout
     // Robot waits for .2 seconds to avoid cpu overload
@@ -27,18 +26,16 @@ void tenBR(lemlib::Chassis &chassis) {
     // Robot moves to the loader and constantly drives into it to ensure proper loading
     chassis.moveToPoint(80,46, 800,  {.forwards=true, .maxSpeed = 65, .minSpeed = 30}, false); // move to (80, 46) with a 1 second timeout
     // Robot moves backwards to the goal
-    chassis.moveToPose(20,47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
-    // Robot waits for .73 seconds to avoid losing blocks
-        pros::delay(730);
+    chassis.moveToPose(25,47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
+    // Robot waits for .75 seconds to avoid losing blocks
+        pros::delay(750);
     // Robot scores the blocks in the long goal
     Descore.retract();
     Loader.retract();
     // reverse intake to unjam any blocks
-    Intake.move_velocity(600);
     Redirect.move_velocity(600);
     Sort.move_velocity(600);
         pros::delay(50);
-    Intake.move_velocity(600);
     Redirect.move_velocity(-600);
     Sort.move_velocity(-600);
     RclMain.startAccumulating();
@@ -49,52 +46,45 @@ void tenBR(lemlib::Chassis &chassis) {
     Descore.extend();
     Loader.retract();
     // Robot turns to face center blocks
-    chassis.swingToPoint(20, 20, lemlib::DriveSide::RIGHT ,1200, {.forwards=true, .minSpeed = 40}); // swing to (20, 20) with a 500ms timeout
+    chassis.turnToPoint(24,24,800,{.minSpeed = 40}); // swing to (24, 24) with a .8 second timeout
     // Robot moves to pick up center blocks
-    chassis.moveToPoint(24,24, 3000,  {.forwards=true, .maxSpeed = 80}); // move to (20, 20) with a 3 second timeout
-    pros::delay(250);
-    Loader.extend();
-    pros::delay(200);
-    Loader.retract();
+    chassis.moveToPose(24,24,180, 3000,  {.forwards=true, .maxSpeed = 80}); // move to (20, 20) with a 3 second timeout
     RclMain.updateBotPose();
     // Robot moves to other side to pick up center blocks
     chassis.moveToPoint(24,-24, 2000); // move to (25,-25) with a 2 second timeout
-      pros::delay(900);
+        pros::delay(900);
     Loader.extend();
     // Robot moves backwards to mid goal
     RclMain.updateBotPose();
-    pros::delay(200);
-    chassis.turnToHeading(135,500);
-    chassis.moveToPose(8.5,-8.5,135, 2000,  {.forwards=false, .maxSpeed = 70}); // move to (8.5, -8.5) with a 2 second timeout
+        pros::delay(200);
+    chassis.moveToPose(8,-9,135, 2000,  {.forwards=false}); // move to (8.5, -8.5) with a 2 second timeout
         pros::delay(850);
-    RclMain.updateBotPose();
     // Sort reverse to score
     Descore.retract();
-    pros::delay(100);
-    Sort.move_velocity(600);
-        pros::delay(200);
+        pros::delay(150);
+    Sort.move_velocity(400);
+        pros::delay(400);
+    chassis.moveToPoint(46,-46,2500); // move to (46, -46) with a 2.5 second timeout
     Redirect.move_velocity(600);
     Sort.move_velocity(-600);
     Descore.extend();
-        pros::delay(200);
-    Intake.move_velocity(600);
+        pros::delay(400);
     Redirect.move_velocity(-600);
     Sort.move_velocity(-600);
-    chassis.moveToPoint(47,-47,2500,  { .maxSpeed = 100}); // move to (47, -47) with a 2.5 second timeout
-    chassis.moveToPoint(80,-46, 1000,  {.forwards=true, .maxSpeed = 65, .minSpeed = 30}, false); // move to (80, 46) with a 1 second timeout
+    chassis.moveToPose(80,-46,90, 1000,  {.minSpeed = 30}, false); // move to (80, 46) with a 1 second timeout
+    RclMain.updateBotPose();
     // Robot moves backwards to the goal
-    chassis.moveToPose(20,-47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
-    // Robot waits for .73 seconds to avoid losing blocks
-        pros::delay(730);
+    chassis.moveToPose(25,-47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
+    // Robot waits for .75 seconds to avoid losing blocks
+        pros::delay(750);
+    Redirect.move_velocity(600);
+    Sort.move_velocity(600);
+        pros::delay(50);
+    Redirect.move_velocity(-600);
+    Sort.move_velocity(-600);
     // Robot scores the blocks in the long goal
     Descore.retract();
     Loader.retract();
-    // reverse intake to unjam any blocks
-    Redirect.move_velocity(600);
-    Sort.move_velocity(600);
-        pros::delay(100);
-    Redirect.move_velocity(-600);
-    Sort.move_velocity(-600);
 }
 
 void sixBR(lemlib::Chassis &chassis) {

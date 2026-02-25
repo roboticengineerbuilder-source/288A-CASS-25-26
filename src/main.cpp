@@ -3,6 +3,7 @@
 #include "customs/autons.hpp"
 #include "customs/autonselector.hpp"
 #include "customs/subsystems.hpp"
+#include "customs/tasks.hpp"
 #include "customs/RCL.hpp"
 
 // Where Do You want the robot to end? (This is static for position logging)
@@ -15,6 +16,7 @@ void initialize() {
     pros::lcd::initialize(); // Initialize brain screen
     chassis.calibrate(); // calibrate sensors
     RclMain.startTracking(); // start RCL tracking
+    pros::Task antiJam(antiJamTask, nullptr, "Anti Jam Task");
 
 // Thread to for brain screen and position logging
 pros::Task screenTask([&]() {
