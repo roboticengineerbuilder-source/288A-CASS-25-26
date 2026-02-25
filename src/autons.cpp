@@ -27,8 +27,8 @@ void tenBR(lemlib::Chassis &chassis) {
     chassis.moveToPoint(80,46, 800,  {.forwards=true, .maxSpeed = 65, .minSpeed = 30}, false); // move to (80, 46) with a 1 second timeout
     // Robot moves backwards to the goal
     chassis.moveToPose(25,47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
-    // Robot waits for .75 seconds to avoid losing blocks
-        pros::delay(750);
+    // Robot waits for .85 seconds to avoid losing blocks
+        pros::delay(850);
     // Robot scores the blocks in the long goal
     Descore.retract();
     Loader.retract();
@@ -75,8 +75,8 @@ void tenBR(lemlib::Chassis &chassis) {
     RclMain.updateBotPose();
     // Robot moves backwards to the goal
     chassis.moveToPose(25,-47, 90, 2000,  {.forwards=false}); // move back to (20, 47) with a 2 second timeout
-    // Robot waits for .75 seconds to avoid losing blocks
-        pros::delay(750);
+    // Robot waits for .85 seconds to avoid losing blocks
+        pros::delay(850);
     Redirect.move_velocity(600);
     Sort.move_velocity(600);
         pros::delay(50);
