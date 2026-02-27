@@ -56,7 +56,7 @@ ASSET(PathLoader_txt); // The ASSET (PathLoader_txt) '.' replaced with "_" to ma
 
 // Autonomous
 void autonomous() {
-    sixBL(chassis); 
+    tenBR(chassis); 
     // int a = selector::getAuton();
     // switch (a) {
     //     case 1:  tenBR(chassis); break;
