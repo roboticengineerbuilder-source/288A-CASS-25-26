@@ -31,14 +31,13 @@ Project Architecture
 main.cpp
 
 customs/
-│
-├── roboports.hpp        → All hardware config
-├── pidgains.hpp         → PID + drive curves
-├── autons.hpp           → All autonomous routines
-├── autonselector.hpp    → LVGL selector system
-├── subsystems.hpp       → Intake + pneumatics logic
-├── tasks.hpp            → Anti-jam system
-└── RCL.hpp              → EvanLib localization framework
+roboports.hpp        → All hardware config
+pidgains.hpp         → PID + drive curves
+autons.hpp           → All autonomous routines
+autonselector.hpp    → LVGL selector system
+subsystems.hpp       → Intake + pneumatics logic
+tasks.hpp            → Anti-jam system
+RCL.hpp              → EvanLib localization framework
 
 Motion System (LemLib)
 
