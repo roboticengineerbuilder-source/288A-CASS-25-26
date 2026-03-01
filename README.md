@@ -1,5 +1,5 @@
 #VEX Team 288A – CASS-25
-EvanLib is a Ray-Casting Localization framework that works along side LemLib's Competition Code.
+EvanLib is a Ray-Casting Localization framework that works along side LemLib.
 
 Official repository of Team 288A during the 2025/2026 VEX Robotics Competition season, Push Back.
 
