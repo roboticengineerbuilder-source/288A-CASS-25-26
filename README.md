@@ -1,31 +1,25 @@
-#VEX Team 288A – CASS-25
+#VEX Team 288A–CASS-25:
 EvanLib is a Ray-Casting Localization framework that works along side LemLib.
 Official repository of Team 288A during the 2025/2026 VEX Robotics Competition season, Push Back.
-This project is built using:
 
+This project is built using:
 PROS
 LemLib (motion + odometry)
 EvanLib (Ray-Casting Localization)
 
 This README is written for future RoboDawgs programmers who might reuse, maintain, or expand this system.
 
-Core Philosophy
-
-Tracking wheels drift.
-IMUs drift.
-Matches are long.
+Core Philosophy:
+Tracking wheels drift, IMUs drift, and matches are long.
 
 So we built a robot pose localizer that is not reliant on odometry alone.
-
 Tracking Wheels + IMU → LemLib Odometry
 Distance Sensors      → EvanLib (RCL)
 LemLib + RCL          → Drift-Limited Pose Fusion
 
 This code continuously corrects its global position using field geometry.
 
-Project Architecture
-main.cpp
-
+Project Architecture:
 customs/
 roboports.hpp        → All hardware config
 pidgains.hpp         → PID + drive curves
@@ -36,127 +30,45 @@ tasks.hpp            → Anti-jam system
 RCL.hpp              → EvanLib localization framework
 
 Motion System (LemLib)
-
 Handled through lemlib::Chassis.
 
-Odometry
-
+Odometry:
 2 vertical tracking wheels
-
 1 horizontal tracking wheel
 
-IMU
+IMU:
 
 12" track width
-
 2.75" omni wheels
 
-PID Configuration
-
+PID Configuration:
 High D on linear controller for sharp corrections
-
 Moderate angular D for heading stability
-
 No integral (prevents windup)
 
-Expo Drive Curves
-
+Expo Drive Curves:
 Deadband filtering
-
 Minimum movement threshold
-
 Light exponential scaling
 
-EvanLib (Ray-Casting Localization)
+EvanLib (Ray-Casting Localization):
 What It Does
+EvanLib uses 4 distance sensors to cast rays toward field walls, detect obstacles blocking the ray, validate sensor confidence compute corrected X or Y, then gradually sync pose with LemLib. It does not snap pose instantly. It limits max correction per update, limits max corrections per second, rejects extreme deltas, supports accumulation mode, obstacle Modeling, and dynamic obstacles prevent false wall readings.
 
-EvanLib uses 4 distance sensors to:
-
-Cast rays toward field walls
-
-Detect obstacles blocking the ray
-
-Validate sensor confidence
-
-Compute corrected X or Y
-
-Gradually sync pose with LemLib
-
-It does not snap pose instantly.
-
-It:
-
-Limits max correction per update
-
-Limits max corrections per second
-
-Rejects extreme deltas
-
-Supports accumulation mode
-
-Obstacle Modeling
-
-Dynamic obstacles prevent false wall readings.
-
-Line_Obstacle
-
-Used for:
-
-Disable line
-
-Field barriers
-
-Polygonal shapes
-
-Circle_Obstacle
-
-Used for:
-
-Loaders
-
-Goal legs
-
-Center goals
+Line_Obstacle:
+Used for disable line, field barriers, polygonal shapes, and Circle_Obstacle. Used for Loaders, Goal legs, and Center goals.
 
 Obstacles:
-
-Exist in a global collection
-
-Auto-expire via lifetime timer
-
-Can be inserted/removed at runtime
-
-Pose localizer Strategy
+Exist in a global collection, Auto-expire via lifetime timer, can be inserted/removed at runtime, and are a Pose localizer Strategy.
 
 When updating:
-
-Sensor validates distance
-
-Ray intersection is calculated
-
-Obstacle intersection is checked
-
-Coordinate correction computed
+Sensor validates distance, Ray intersection is calculated, Obstacle intersection is checked, and Coordinate correction computed.
 
 Delta filtered against:
-
-minDelta
-
-maxDelta
-
-maxDeltaFromLemlib
-
-Limited by maxSyncPerSec
-
-Smooth sync applied
+minDelta/maxDelta, maxDeltaFromLemlib, Limited by maxSyncPerSec, and Smooth sync applied.
 
 This prevents:
-
-Jitter
-
-Snap corrections
-
-Oscillation loops
+Jitter, Snap corrections, and Oscillation loops.
 
 Autonomous System
 
