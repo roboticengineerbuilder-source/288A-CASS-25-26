@@ -8,7 +8,6 @@ void antiJamTask(void*) {
     int lowVelocityCounter = 0;
 
     while (true) {
-
         // If intake is reversed, DO NOT anti-jam
         if (controller.get_digital(DIGITAL_L2)) {
             lowVelocityCounter = 0;
@@ -18,20 +17,15 @@ void antiJamTask(void*) {
 
         // Intake always runs forward unless jammed
         double intakeVelocity = fabs(Intake.get_actual_velocity());
-
         if (intakeVelocity < 20)
             lowVelocityCounter++;
         else
             lowVelocityCounter = 0;
-
         if (lowVelocityCounter > 15) {
-            // JAM → reverse briefly
             Intake.move_velocity(-600);
         } else {
-            // NORMAL → run forward
             Intake.move_velocity(600);
         }
-
         pros::delay(50);
     }
 }

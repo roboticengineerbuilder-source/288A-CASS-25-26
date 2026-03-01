@@ -14,30 +14,30 @@ pros::MotorGroup rightMotors({-14, 15, -16}, pros::MotorGearset::blue); // right
 pros::Imu imu(2); // Inertial sensor, port 2
 
 // Distance Sensors
-inline pros::Distance back_dist(4);
-inline pros::Distance right_dist(18);
-inline pros::Distance front_dist(3);
-inline pros::Distance left_dist(7);
+inline pros::Distance back_dist(4); // Distance sensor, port 4
+inline pros::Distance right_dist(18); // Distance sensor, port 18
+inline pros::Distance front_dist(3); // Distance sensor, port 3
+inline pros::Distance left_dist(7); // Distance sensor, port 7
 
 // Rcl setup
 inline RclSensor front_rcl(&front_dist, -6.75, 3.75, 0.0, 15.0);  // 6.75 inch to the left; 3.75 inches to the front; facing front
 inline RclSensor right_rcl(&right_dist, 5, 4.25, 90.0, 15.0);  // 5 inches to the right; 4.25 vertical offset; facing right
 inline RclSensor back_rcl(&back_dist, -5.25, -3.5, 180.0, 15.0);   // 5.25 inches to the left; 3.5 inches to the back; facing back
 inline RclSensor left_rcl(&left_dist, -5, 4.25, 270.0, 15.0);   // 5 inches to the left; 4.25 vertical offset, facing left
-inline RclTracking RclMain(&chassis, 30, true, 0.5, 4.0, 10.0, 6.0, 20);
+inline RclTracking RclMain(&chassis, 30, true, 0.5, 4.0, 10.0, 6.0, 20); // Frequency for AutoSync, AutoSync (true) = autoupdate pose, min/max delta (error range tolerance)
 
 // loaders (Push-Back)
-inline Circle_Obstacle redUpLoader(-67.5, 46.5, 3);
-inline Circle_Obstacle redDownLoader(-67.5, -46.5, 3);
-inline Circle_Obstacle blueUpLoader(67.5, 46.5, 3);
-inline Circle_Obstacle blueDownLoader(67.5, -46.5, 3);
+inline Circle_Obstacle redUpLoader(-67.5, 46.5, 3); // RCL Obstruction avoidence
+inline Circle_Obstacle redDownLoader(-67.5, -46.5, 3); // RCL Obstruction avoidence
+inline Circle_Obstacle blueUpLoader(67.5, 46.5, 3); // RCL Obstruction avoidence
+inline Circle_Obstacle blueDownLoader(67.5, -46.5, 3); // RCL Obstruction avoidence
 
 // Goal legs (Push-Back)
-inline Circle_Obstacle upLongGoalLeft(-21, 47.5, 4);
-inline Circle_Obstacle upLongGoalRight(21, 47.5, 4);
-inline Circle_Obstacle downLongGoalLeft(-21, -47.5, 4);
-inline Circle_Obstacle downLongGoalRight(21, -47.5, 4);
-inline Circle_Obstacle centerGoals(0, 0, 5);
+inline Circle_Obstacle upLongGoalLeft(-21, 47.5, 4); // RCL Obstruction avoidence
+inline Circle_Obstacle upLongGoalRight(21, 47.5, 4); // RCL Obstruction avoidence
+inline Circle_Obstacle downLongGoalLeft(-21, -47.5, 4); // RCL Obstruction avoidence
+inline Circle_Obstacle downLongGoalRight(21, -47.5, 4); // RCL Obstruction avoidence
+inline Circle_Obstacle centerGoals(0, 0, 5); // RCL Obstruction avoidence
 
 // Disable Line for the autonomous period
 inline Line_Obstacle disableLine(0, FIELD_NEG_HALF_LENGTH, 0, FIELD_HALF_LENGTH);

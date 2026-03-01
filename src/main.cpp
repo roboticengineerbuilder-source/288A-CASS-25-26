@@ -14,14 +14,14 @@ double desiredTheta = 90;
 // Initialize the robot code
 void initialize() {
     pros::lcd::initialize(); // Initialize brain screen
-    chassis.calibrate(); // calibrate sensors
-    RclMain.startTracking(); // start RCL tracking
-    // pros::Task antiJam(antiJamTask, nullptr, "Anti Jam Task");
+    chassis.calibrate(); // Calibrate sensors
+    RclMain.startTracking(); // Start RCL tracking
+    // pros::Task antiJam(antiJamTask, nullptr, "Anti Jam Task"); // Anti-Jam is in beta testing (DO NOT USE)
 
-// Thread to for brain screen and position logging
+// Thread for brain screen and position logging
 pros::Task screenTask([&]() {
     while (true) {
-        // Set background
+        // Set brain background
         pros::screen::set_pen(pros::c::COLOR_BLACK);
         pros::screen::fill_rect(0, 0, 480, 240);
         // Desired vs current position text
@@ -41,6 +41,7 @@ void disabled() {}
 
 // Competition initialize
 void competition_initialize() { 
+    // Set autonselector
     const char* autons[] = {
         "10 Ball Right",
         "6 Ball Right",
@@ -56,7 +57,8 @@ ASSET(PathLoader_txt); // The ASSET (PathLoader_txt) '.' replaced with "_" to ma
 
 // Autonomous
 void autonomous() {
-    tenBR(chassis); 
+    sixBR(chassis); //Runs auto without autonselector by calling this
+    // // Autonselector switch
     // int a = selector::getAuton();
     // switch (a) {
     //     case 1:  tenBR(chassis); break;

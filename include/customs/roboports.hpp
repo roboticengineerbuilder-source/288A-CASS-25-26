@@ -27,13 +27,13 @@ extern RclSensor back_rcl;
 extern RclSensor left_rcl;
 extern RclTracking RclMain;
 
-// Loaders (Push-Back)
+// Loaders (Push-Back VEX)
 extern Circle_Obstacle redUpLoader;
 extern Circle_Obstacle redDownLoader;
 extern Circle_Obstacle blueUpLoader;
 extern Circle_Obstacle blueDownLoader;
 
-// Goal legs (Push-Back)
+// Goal legs (Push-Back VEX)
 extern Circle_Obstacle upLongGoalLeft;
 extern Circle_Obstacle upLongGoalRight;
 extern Circle_Obstacle downLongGoalLeft;
@@ -61,7 +61,7 @@ extern lemlib::TrackingWheel vertical1;
 extern lemlib::TrackingWheel vertical2;
 extern lemlib::TrackingWheel horizontal1;
 
-// Drivetrain + controllers
+// Drivetrain and controllers
 extern lemlib::Drivetrain drivetrain;
 extern lemlib::ControllerSettings linearController;
 extern lemlib::ControllerSettings angularController;

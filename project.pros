@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "tenBR",
+    "project_name": "sixBRush",
     "target": "v5",
     "templates": {
       "LemLib": {
